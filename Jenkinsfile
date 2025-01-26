@@ -20,29 +20,29 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
-				dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
+				//dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
 					sh 'mvn -s settings.xml -DskipTests install'
-				}
+				//}
 			}
 			post{
 				success{
 					echo "Archiving...."
-					archiveArtifacts artifacts: 'P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins/target/*war'
+					archiveArtifacts artifacts: '/target/*war'
 				}
 			}
 		}
 		stage('Test'){
 			steps{
-				dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
+				//dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
 					sh 'mvn -s settings.xml test'
-				}
+				//}
 			}
 		}
 		stage('Checkstyle Analysis'){
 			steps{
-				dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
+				//dir('P15 - Continuous Delivery and Continuous Management using Jenkins and Ansible/vprofile-project-ci-jenkins'){
 					sh 'mvn -s settings.xml checkstyle:checkstyle'
-				}
+				//}
 			}
 		}
 		stage('Sonar Analysis') {
